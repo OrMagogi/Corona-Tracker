@@ -1,0 +1,9 @@
+mat-toolbar{
+    background: rgb(1, 3, 121);
+    color: white;
+    font-family: sans-serif;
+}
+
+.toRight{
+    text-align: right;
+}

@@ -1,0 +1,32 @@
+.heartImg{
+    padding-left: 1em;
+    width: 4em;
+    height: 4em;
+    animation-name: beeping-animation;
+    animation-duration: 400ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in;
+    animation-direction:alternate;
+}
+
+.staySafe{
+    padding-bottom: 10vh;
+    color:white;
+    background: rgba(1, 3, 121,0.85);
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+    grid-row-gap: 20%;
+    align-items: center;
+    justify-content: center;
+
+}
+
+@keyframes beeping-animation{
+    from{
+        transform: scale(1.1);
+    }
+    to{
+        transform: scale(1);
+    }
+}

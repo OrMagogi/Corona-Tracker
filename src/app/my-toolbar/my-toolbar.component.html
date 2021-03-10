@@ -1,0 +1,47 @@
+<mat-toolbar>
+    <mat-toolbar-row *ngIf="isScreenXs" fxLayoutAlign="center">
+        <span>
+            <p>Hello visitor!</p>
+        </span>
+    </mat-toolbar-row>
+    <mat-toolbar-row fxLayoutAlign="space-between center">
+            <span>
+                <button mat-button routerLink="homePage">
+                    <span>  <mat-icon>home</mat-icon>  </span>
+                    <span>  Home  </span>
+                </button>
+                <button mat-button (click)="open(content)">
+                    <span>  <mat-icon>account_circle</mat-icon>  </span>
+                    <span>  Log in  </span>
+                </button>
+            </span>
+            <span *ngIf="!isScreenXs">
+                <p>Hello visitor!</p>
+            </span>
+        
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h2>Log In</h2>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form #loginForm="ngForm">
+              <div class="form-group">
+                  <label>Username</label>
+                  <input  type="text" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Password</label>
+                <input  type="password" class="form-control">
+
+            </div>
+            
+        
+          </form>
+      </div>
+  </ng-template>

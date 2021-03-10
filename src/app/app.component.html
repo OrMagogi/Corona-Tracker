@@ -1,3 +1,6 @@
+<div *ngIf="_appService.getIsLoading()" style=" position: absolute;background-color: black; opacity: 0.6; width: 100%; height:100vh;z-index: 99;">
+<mat-spinner style="top: 50%; left: 50%;"></mat-spinner></div>
+
 <app-my-toolbar [isScreenXs]="isScreenXs"></app-my-toolbar>
 <router-outlet></router-outlet>
 <div class="staySafe">
@@ -6,7 +9,8 @@
         <img src="../assets/data/heart.png" class="heartImg">
     </div>
     <div>
-        All Rights Reserved 
+        All Rights Reserved
         <mat-icon>&copy;</mat-icon>
     </div>
+
 </div>

@@ -1,0 +1,28 @@
+#registrationForm{
+    width: 60vw;
+    margin-left: 20vw;
+}
+
+.center{
+    text-align: center;
+}
+.numberInput{
+    width: 5em;
+}
+
+.submitButton{
+    text-align: center;
+    background: rgb(25, 1, 112);
+    color: white;
+    border-radius: 1em;
+    width: 8em;
+    height: 3em;
+}
+
+.requiredInput{
+    color:rgb(255, 0, 0)
+}
+
+.disabledButton{
+    background: rgba(25,1,112,0.3);
+}

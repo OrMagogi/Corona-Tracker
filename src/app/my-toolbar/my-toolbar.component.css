@@ -7,3 +7,24 @@ mat-toolbar{
 .toRight{
     text-align: right;
 }
+
+.submitButton{
+    text-align: center;
+    background: rgb(25, 1, 112);
+    color: white;
+    border-radius: 1em;
+    width: 8em;
+    height: 3em;
+}
+
+.link{
+    color: rgb(1, 1, 209);
+    text-decoration: underline;
+}
+.link:hover{
+    color:rgb(73, 73, 255)
+}
+
+.disabledButton{
+    background: rgba(25,1,112,0.3);
+}

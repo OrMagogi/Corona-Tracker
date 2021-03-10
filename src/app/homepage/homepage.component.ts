@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CoronaTrackerService } from '../corona-tracker.service';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-homepage',
@@ -12,5 +13,4 @@ export class HomepageComponent implements OnInit {
   ngOnInit(): void {
     this.isScreenXs = this._appService.getIsScreenXs();
   }
-
 }

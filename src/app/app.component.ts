@@ -3,6 +3,7 @@ import { FlexLayoutModule , MediaChange , MediaObserver} from '@angular/flex-lay
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CoronaTrackerService } from './corona-tracker.service';
+import {ReactiveFormsModule,FormsModule ,FormBuilder,FormControl, FormGroup, FormArray  } from '@angular/forms';
 
 
 
@@ -15,12 +16,12 @@ export class AppComponent implements OnInit,OnDestroy{
   title = 'corona-tracker';
   public mediaSub:Subscription;
   public isScreenXs:boolean;
-  constructor(public mediaObserver:MediaObserver, private _appService:CoronaTrackerService){}
+  constructor(public mediaObserver:MediaObserver, public _appService:CoronaTrackerService){}
   ngOnInit(): void {
+    this._appService.setIsLoading(false);
     this.mediaSub = this.mediaObserver.media$.subscribe((result:MediaChange)=>{
       this.isScreenXs = result.mqAlias === 'xs' ? true : false;
       this._appService.setIsScreenXs(this.isScreenXs);
-      console.log(this.isScreenXs);
 
     });
   }

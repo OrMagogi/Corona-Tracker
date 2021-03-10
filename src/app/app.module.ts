@@ -10,7 +10,22 @@ import { MyToolbarComponent } from './my-toolbar/my-toolbar.component';
 import {MatIconModule} from '@angular/material/icon';
 import { HomepageComponent } from './homepage/homepage.component';
 import {CoronaTrackerService} from './corona-tracker.service';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {MatDialogModule} from '@angular/material/dialog';
+import {FormsModule} from '@angular/forms';
+import { ReactiveFormsModule  } from '@angular/forms';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatFormField} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { FormBuilder,FormControl, FormGroup, FormArray  } from '@angular/forms';
+import { RegistrationComponent } from './registration/registration.component';
+import { HttpClientModule } from '@angular/common/http';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
+
+
+
 
 
 @NgModule({
@@ -18,6 +33,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppComponent,
     MyToolbarComponent,
     HomepageComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
@@ -27,8 +43,16 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
-    NgbModule,
-  ],
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule ,
+    MatStepperModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule,
+    HttpClientModule,
+    MatProgressSpinnerModule,
+    ],
   providers: [CoronaTrackerService],
   bootstrap: [AppComponent]
 })

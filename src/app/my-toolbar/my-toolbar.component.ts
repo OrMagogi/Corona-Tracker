@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component,NgModule , ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
@@ -15,15 +15,17 @@ import {FormsModule} from '@angular/forms';
 })
 export class MyToolbarComponent implements OnInit {
   @Input() isScreenXs:boolean;
+  @ViewChild('loginPassword') loginPasswordRef:ElementRef;
   constructor(public modalService: NgbModal) {}
 
   ngOnInit(): void {
   }
 
   closeResult = '';
-
+  public hidePassword=true;
 
   open(content) {
+    this.hidePassword=true;
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -41,5 +43,12 @@ export class MyToolbarComponent implements OnInit {
     }
   }
 
+  togglePasswordVisibility(){
+    this.hidePassword= !this.hidePassword;
+  }
 
+  onSubmitLogin(username,password){
+    console.log("Login: "+username + " "+password );
+    
+  }
 }

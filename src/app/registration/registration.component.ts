@@ -15,6 +15,7 @@ export class RegistrationComponent implements OnInit {
   constructor(private fb: FormBuilder,private _service: CoronaTrackerService) { }
 
   ngOnInit(): void {
+    this._service.setIsEmailAlreadyExists(false);
   }
 
   get firstName(){

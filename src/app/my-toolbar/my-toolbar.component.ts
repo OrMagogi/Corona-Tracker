@@ -6,6 +6,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatDialogModule} from '@angular/material/dialog';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule} from '@angular/forms';
+import { CoronaTrackerService } from '../corona-tracker.service';
 
 
 @Component({
@@ -16,7 +17,7 @@ import {FormsModule} from '@angular/forms';
 export class MyToolbarComponent implements OnInit {
   @Input() isScreenXs:boolean;
   @ViewChild('loginPassword') loginPasswordRef:ElementRef;
-  constructor(public modalService: NgbModal) {}
+  constructor(public modalService: NgbModal, private _service: CoronaTrackerService) {}
 
   ngOnInit(): void {
   }
@@ -47,8 +48,11 @@ export class MyToolbarComponent implements OnInit {
     this.hidePassword= !this.hidePassword;
   }
 
-  onSubmitLogin(username,password){
-    console.log("Login: "+username + " "+password );
-    
+  onSubmitLogin(userEmail: String ,userPassword: String){
+    this._service.loginUser( userEmail, userPassword);
+  }
+
+  onEnterRegistration(){
+    this.modalService.dismissAll();
   }
 }

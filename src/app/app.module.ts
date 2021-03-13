@@ -22,6 +22,8 @@ import { FormBuilder,FormControl, FormGroup, FormArray  } from '@angular/forms';
 import { RegistrationComponent } from './registration/registration.component';
 import { HttpClientModule } from '@angular/common/http';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { LogoutDialogComponent } from './logout-dialog/logout-dialog.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 
@@ -33,7 +35,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     AppComponent,
     MyToolbarComponent,
     HomepageComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    LogoutDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +55,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatInputModule,
     HttpClientModule,
     MatProgressSpinnerModule,
+    MatCheckboxModule,
     ],
   providers: [CoronaTrackerService],
   bootstrap: [AppComponent]

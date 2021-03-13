@@ -22,7 +22,6 @@ export class AppComponent implements OnInit,OnDestroy{
     this.mediaSub = this.mediaObserver.media$.subscribe((result:MediaChange)=>{
       this.isScreenXs = result.mqAlias === 'xs' ? true : false;
       this._appService.setIsScreenXs(this.isScreenXs);
-
     });
   }
   ngOnDestroy(): void {

@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -35,11 +38,8 @@ export class CoronaTrackerService {
     return val;
   }
 
-  loginUser( enteredEmail: String , enteredPassword: String){
-    this._http.post<any>(this.loginUrl,{"enteredEmail": enteredEmail, "enteredPassword": enteredPassword }).subscribe(response =>{
-      console.log(response.message);
-      
-    });
+  loginUser( enteredEmail: String , enteredPassword: String): Observable<any>{
+    return this._http.post<any>(this.loginUrl,{"enteredEmail": enteredEmail, "enteredPassword": enteredPassword });
   }
 
   setIsLoading(isLoading: boolean) {
@@ -57,4 +57,12 @@ export class CoronaTrackerService {
   getIsEmailAlreadyExists() {
     return this.isEmailAlreadyExists;
   }
+
+  setIsLoggedIn(isLoggedIn:boolean){
+    this.isLoggedIn = isLoggedIn;
+  }
+  getIsLoggedIn(){
+    return this.isLoggedIn;
+  }
+
 }

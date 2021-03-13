@@ -1,7 +1,8 @@
 <mat-toolbar>
     <mat-toolbar-row *ngIf="isScreenXs" fxLayoutAlign="center">
         <span>
-            <p>Hello visitor!</p>
+            <p *ngIf="!isLoggedIn">Hello visitor!</p>
+            <p *ngIf="isLoggedIn"> {{loggedUser}}</p>
         </span>
     </mat-toolbar-row>
     <mat-toolbar-row fxLayoutAlign="space-between center">
@@ -12,15 +13,17 @@
                 </span>
                 <span> Home </span>
             </button>
-            <button mat-button (click)="open(loginModal)">
+            <button mat-button (click)="handleLogInOut(loginModal)">
                 <span>
-                    <mat-icon>account_circle</mat-icon>
+                    <mat-icon *ngIf="!isLoggedIn">account_circle</mat-icon>
                 </span>
-                <span> Log in </span>
+                <span *ngIf="!isLoggedIn">Log in</span>
+                <span *ngIf="isLoggedIn" style="text-decoration: underline;">Log out</span>
             </button>
         </span>
         <span *ngIf="!isScreenXs">
-            <p>Hello visitor!</p>
+            <p *ngIf="!isLoggedIn">Hello visitor!</p>
+            <p *ngIf="isLoggedIn"> {{loggedUser}}</p>
         </span>
 
     </mat-toolbar-row>

@@ -89,9 +89,9 @@ app.post('/loginUser', (req,res)=>{
     let enteredPassword = req.body.enteredPassword;
     User.findById(enteredEmail).then((response)=>{
         if(response==null){
-            res.send({"message": "There is no user with that Email address"});
+            res.send({"message": "email address does not exist"});
         } else if( response.password != enteredPassword){
-            res.send({"message": "Incorrect password"});
+            res.send({"message": "incorrect password"});
         } else{
             res.send({"message": "success", "fullName" : response.firstName +" "+ response.lastName});
         }

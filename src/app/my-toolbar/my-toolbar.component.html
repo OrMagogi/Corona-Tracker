@@ -46,6 +46,7 @@
                 <label style="margin-right:1em">Password</label>
                 <mat-icon (click)="togglePasswordVisibility()">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
                 <input #loginPassword="ngModel" type="password" ngModel [type]="hidePassword? 'password':'text'" class="form-control" name="loginPassword" required>
+                <div *ngIf="isLoginDataIncorrect"><small class="text-danger">{{failedLoginMessage}}</small></div>
             </div>
             <div class="link">
                 <a routerLink="registrationPage" (click)="onEnterRegistration()">Register</a>

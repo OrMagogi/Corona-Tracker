@@ -18,12 +18,14 @@ import { LogoutDialogComponent } from '../logout-dialog/logout-dialog.component'
 export class MyToolbarComponent implements OnInit {
   @Input() isScreenXs:boolean;
   @ViewChild('loginPassword') loginPasswordRef:ElementRef;
+  @ViewChild('loginUsername') loginUsernameRef:ElementRef;
   loggedUser:String;
   isLoggedIn:boolean;
+  isLoginDataIncorrect:boolean;
+  failedLoginMessage;
   constructor(public modalService: NgbModal, private _service: CoronaTrackerService , private dialog: MatDialog) {}
 
   ngOnInit(): void {
-    
     if(localStorage.getItem("loggedUser")!='undefined'){
       this.loggedUser = localStorage.getItem("loggedUser");
       this.isLoggedIn = true;
@@ -32,6 +34,7 @@ export class MyToolbarComponent implements OnInit {
     } else{
       this.isLoggedIn = false;
     }
+    this.isLoginDataIncorrect=false;
   }
 
   closeResult = '';
@@ -39,7 +42,6 @@ export class MyToolbarComponent implements OnInit {
 
   handleLogInOut(loginModal){
     if(!this.isLoggedIn){
-      console.log("toolbar: handleLogInOut: log in modal");
       this.open(loginModal);
     } else{
       this.openLogoutDialog();
@@ -56,6 +58,7 @@ export class MyToolbarComponent implements OnInit {
   }
 
   private getDismissReason(reason: any): string {
+    this.isLoginDataIncorrect=false;
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
@@ -78,6 +81,9 @@ export class MyToolbarComponent implements OnInit {
         this.loggedUser = response.fullName;
         this._service.setIsLoggedIn(true);
         this.modalService.dismissAll();
+      } else {
+        this.failedLoginMessage = response.message;
+        this.isLoginDataIncorrect = true;
       }
     });
   }
@@ -97,4 +103,6 @@ export class MyToolbarComponent implements OnInit {
       }
     })
   }
+
+
 }

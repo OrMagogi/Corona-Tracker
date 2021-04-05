@@ -5,6 +5,12 @@ const PORT = 3000;
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
+const fs = require('fs');
+const request = require('request');
+const fetch = require('node-fetch');
+const https = require('https');
+let settings = { method: "Get" };
+let url = "https://api.covid19api.com/summary";
 
 
 // MongoDB connection
@@ -38,13 +44,13 @@ app.get('/', function (req, res) {
     res.send("default get function works");
 });
 
-app.get('/hello', function (req, res) {
+app.get('/hello', (req, res) => {
     console.log("server: hello");
-    res.send("hello from server");
+    res.send({ 'message': "hello from server" });
 });
 
 app.post('/registerUser', (req, res) => {
-    User.findById(req.body.emailAddress).then((result)=>{
+    User.findById(req.body.emailAddress).then((result) => {
         if (result == null) {
             console.log("registering new user");
             newUser = new User({
@@ -63,7 +69,7 @@ app.post('/registerUser', (req, res) => {
                 res.send({ 'message': err });
 
             });
-        } else{
+        } else {
             res.send({ 'message': 'Email already exists' });
         }
     });
@@ -84,18 +90,57 @@ function findUser(userEmail) {
     })
 }
 
-app.post('/loginUser', (req,res)=>{
+app.post('/loginUser', (req, res) => {
     let enteredEmail = req.body.enteredEmail;
     let enteredPassword = req.body.enteredPassword;
-    User.findById(enteredEmail).then((response)=>{
-        if(response==null){
-            res.send({"message": "email address does not exist"});
-        } else if( response.password != enteredPassword){
-            res.send({"message": "incorrect password"});
-        } else{
-            res.send({"message": "success", "fullName" : response.firstName +" "+ response.lastName});
+    User.findById(enteredEmail).then((response) => {
+        if (response == null) {
+            res.send({ "message": "email address does not exist" });
+        } else if (response.password != enteredPassword) {
+            res.send({ "message": "incorrect password" });
+        } else {
+            res.send({ "message": "success", "fullName": response.firstName + " " + response.lastName });
         }
-    }).catch((err)=>{
-        res.send({"message": "error"});
+    }).catch((err) => {
+        res.send({ "message": "error" });
+    });
+});
+
+app.get('/coronaInfo', (req, res) => {
+    var data = fs.readFileSync('coronaInfo.txt', 'utf8');
+    res.send({ 'message': data });
+});
+
+
+// get corona data in json api :
+// https://api.covid19api.com/summary
+
+app.get('/getCoronaData', (req, res) => {
+    /* fetch('https://api.covid19api.com/summary',settings)
+        .then((res)=>{
+            res.json();
+        }).then((dataInJson)=>{
+            console.log("dataInJson= "+dataInJson);
+        }) */
+    https.get(url, (result) => {
+        let body = "";
+
+        result.on("data", (chunk) => {
+            body += chunk;
+        });
+
+        result.on("end", () => {
+            try {
+                let json = JSON.parse(body);
+                console.log(json);
+                res.send({'message': 'success', 'data': json});
+                // do something with JSON
+            } catch (error) {
+                console.error(error.message);
+            };
+        });
+
+    }).on("error", (error) => {
+        console.error(error.message);
     });
 });

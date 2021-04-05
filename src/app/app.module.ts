@@ -24,6 +24,13 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { LogoutDialogComponent } from './logout-dialog/logout-dialog.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatBadgeModule} from '@angular/material/badge';
+import { AboutCoronaComponent } from './about-corona/about-corona.component';
+import { GlobalStatisticsComponent } from './global-statistics/global-statistics.component';
+import { GraphsComponent } from './graphs/graphs.component';
+import { MyAccountComponent } from './my-account/my-account.component';
+import { RouterModule } from '@angular/router';
+import { MatSelectModule } from '@angular/material/select';
 
 
 
@@ -36,7 +43,11 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MyToolbarComponent,
     HomepageComponent,
     RegistrationComponent,
-    LogoutDialogComponent
+    LogoutDialogComponent,
+    AboutCoronaComponent,
+    GlobalStatisticsComponent,
+    GraphsComponent,
+    MyAccountComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +67,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     HttpClientModule,
     MatProgressSpinnerModule,
     MatCheckboxModule,
+    MatBadgeModule,
+    RouterModule,
+    MatSelectModule,
     ],
   providers: [CoronaTrackerService],
   bootstrap: [AppComponent]

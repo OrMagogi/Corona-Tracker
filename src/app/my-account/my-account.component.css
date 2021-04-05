@@ -1,0 +1,14 @@
+.centered{
+    text-align: center;
+}
+.headline{
+    font-size: 3em;
+    margin-top: 2em;
+    margin-bottom: 1em;
+    line-height: 1em;
+}
+.pnfImage{
+    size: 5em;
+    height: 50vh;
+    width: auto;
+}

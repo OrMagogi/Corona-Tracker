@@ -1,0 +1,23 @@
+.wideImage{
+    background: url("https://img.etimg.com/thumb/width-1200,height-900,imgsize-980841,resizemode-1,msid-74665314/magazines/panache/caught-in-corona-crossfire-how-the-current-crisis-has-vilified-the-c-word-and-a-mexican-beer-all-at-once.jpg");
+    height: 25vh;
+    margin-top: 3em;
+    margin-bottom: 2em;
+    
+}
+.container{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    margin-bottom: 3em;
+}
+
+p{
+    width: 70vw;
+    text-align: left;
+    font-size: 1.25em;
+    font-style: italic;
+    font-family: sans-serif;
+}
+

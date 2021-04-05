@@ -1,0 +1,15 @@
+<div *ngIf="isLoggedIn ; then myAccount; else visitorNotification">
+
+</div>
+
+
+<ng-template #visitorNotification>
+    <div class="centered">
+        <div class="headline">Sorry, this content is only for logged in users</div>
+        <img class="pnfImage" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSP3iShpQljrYD01FlGxg6ur8ZuJpzzZb-2Q&usqp=CAU">
+    </div>
+</ng-template>
+<ng-template #myAccount>
+    <div>My Account</div>
+
+</ng-template>

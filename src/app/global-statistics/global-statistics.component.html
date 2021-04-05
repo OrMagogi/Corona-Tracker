@@ -1,0 +1,49 @@
+<div *ngIf="isLoggedIn ; then statistics; else visitorNotification">
+
+</div>
+
+
+<ng-template #visitorNotification>
+    <div class="centered">
+        <div class="headline">Sorry, this content is only for logged in users</div>
+        <img class="pnfImage" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSP3iShpQljrYD01FlGxg6ur8ZuJpzzZb-2Q&usqp=CAU">
+    </div>
+</ng-template>
+<ng-template #statistics>
+    <div class="centered">
+        <h1 class="headline">Global Statistics</h1>
+        <div><h2>{{coronaDataDate}}</h2></div>
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>selected country</mat-label>
+                <mat-select [(ngModel)]="selectedCountry" (ngModelChange)="handleSelectedCountry()">
+                  <mat-option *ngFor="let countryData of coronaData" [value]="countryData.Country">
+                    {{countryData.Country}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+        <div [ngClass]="isScreenXs? 'gridContainer21': 'gridContainer12'">
+          <div [ngClass]="isScreenXs? 'largeCoronaDataContainer': 'smallCoronaDataContainer'">
+            <h2 class="coronaDataheadline">Global</h2>
+            <div class="coronaData">New Confirmed: {{globalCoronaData.NewConfirmed}}</div>
+            <div class="coronaData">Total Confirmed: {{globalCoronaData.TotalConfirmed}}</div>
+            <div class="coronaData">New Deaths: {{globalCoronaData.NewDeaths}}</div>
+            <div class="coronaData">Total Deaths: {{globalCoronaData.TotalDeaths}}</div>
+            <div class="coronaData">New Recovered: {{globalCoronaData.NewRecovered}}</div>
+            <div class="coronaData">Total Recovered: {{globalCoronaData.TotalRecovered}}</div>
+          </div>
+          <div [ngClass]="isScreenXs? 'largeCoronaDataContainer': 'smallCoronaDataContainer'">
+            <h2 class="coronaDataheadline">{{selectedCountry}}</h2>
+            <div class="coronaData">New Confirmed: {{selectedCountryData.newConfirmed}}</div>
+            <div class="coronaData">Total Confirmed: {{selectedCountryData.totalConfirmed}}</div>
+            <div class="coronaData">New Deaths: {{selectedCountryData.newDeaths}}</div>
+            <div class="coronaData">Total Deaths: {{selectedCountryData.totalDeaths}}</div>
+            <div class="coronaData">New Recovered: {{selectedCountryData.newRecovered}}</div>
+            <div class="coronaData">Total Recovered: {{selectedCountryData.totalRecovered}}</div>
+          </div>
+        </div>
+    </div>
+
+
+</ng-template>

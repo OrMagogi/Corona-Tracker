@@ -31,6 +31,7 @@ import { GraphsComponent } from './graphs/graphs.component';
 import { MyAccountComponent } from './my-account/my-account.component';
 import { RouterModule } from '@angular/router';
 import { MatSelectModule } from '@angular/material/select';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 
@@ -70,6 +71,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatBadgeModule,
     RouterModule,
     MatSelectModule,
+    MatExpansionModule,
     ],
   providers: [CoronaTrackerService],
   bootstrap: [AppComponent]

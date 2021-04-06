@@ -16,6 +16,7 @@ export class CoronaTrackerService {
   loginUrl = 'http://localhost:3000/loginUser';
   coronaInfoUrl= 'http://localhost:3000/coronaInfo';
   coronaDataUrl = 'http://localhost:3000/getCoronaData';
+  questionsAndAnswersUrl = '/assets/data/questions_and_answers.json';
 
   public coronaData;
   public coronaDataDate;
@@ -94,10 +95,6 @@ export class CoronaTrackerService {
   }
 
   getCoronaDataFromStorage() {
-/*     // remove when done
-    localStorage.removeItem("coronaData");
-    localStorage.removeItem("coronaDataDate");
-    //  */
     let currentDate = formatDate(new Date(), 'yyyy/MM/dd', 'en');
     let savedCoronaDataDate = localStorage.getItem("coronaDataDate");
     this.coronaDataDate= currentDate;
@@ -128,5 +125,8 @@ export class CoronaTrackerService {
     });
   }
 
+  getQuestionsAndAnswers(): Observable<any>{
+    return this._http.get(this.questionsAndAnswersUrl);
+  }
 
 }

@@ -6,10 +6,26 @@
 <ng-template #visitorNotification>
     <div class="centered">
         <div class="headline">Sorry, this content is only for logged in users</div>
-        <img class="pnfImage" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSP3iShpQljrYD01FlGxg6ur8ZuJpzzZb-2Q&usqp=CAU">
+        <img class="pnfImage"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSP3iShpQljrYD01FlGxg6ur8ZuJpzzZb-2Q&usqp=CAU">
     </div>
 </ng-template>
 <ng-template #graphs>
-    <div>Graphs</div>
+    <div class="container">
+        <div class="qaContainer centered">
+            <h1 class="headline">Questions And Answers</h1>
+            <mat-accordion>
+                <mat-expansion-panel *ngFor="let element of questionsAndAnswers" style="text-align: left;" (opened)="panelOpenState = true"
+                    (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            {{element.question}}
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <p>{{element.answer}}</p>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+    </div>
 
 </ng-template>

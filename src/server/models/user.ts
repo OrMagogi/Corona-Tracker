@@ -3,21 +3,22 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
     _id: {
         type:String,
-        required:true
+        required:true,
+        unique:true,
+        trim: true
     },
     firstName: {
         type:String,
+        trim: true,
         required:true
     },
     lastName: {
         type:String,
+        trim: true,
         required:true
     },
     dateOfBirth : String,
-/*     emailAddress: {
-        type:String,
-        required:true
-    }, */
+
     password: {
         type:String,
         required:true

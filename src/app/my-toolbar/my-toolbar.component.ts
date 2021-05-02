@@ -73,11 +73,12 @@ export class MyToolbarComponent implements OnInit {
     this.hidePassword = !this.hidePassword;
   }
 
-  onSubmitLogin(userEmail: String, userPassword: String) {
+  onSubmitLogin(userEmail: string, userPassword: string) {
     this._service.loginUser(userEmail, userPassword).subscribe((response) => {
       console.log(response.message);
       if (response.message == 'success') {   // if logged in successfuly
         localStorage.setItem("loggedUser", response.fullName);
+        localStorage.setItem("loggedUserEmail", userEmail);
         this.isLoggedIn = true;
         this.loggedUser = response.fullName;
         this._service.setIsLoggedIn(true);
@@ -100,6 +101,7 @@ export class MyToolbarComponent implements OnInit {
       if (result == "logout") {
         console.log(result);
         localStorage["loggedUser"] = undefined;
+        localStorage["loggedUserEmail"] = undefined;
         this.isLoggedIn = false;
         this._service.setIsLoggedIn(false);
       }

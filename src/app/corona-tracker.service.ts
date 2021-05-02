@@ -16,11 +16,14 @@ export class CoronaTrackerService {
   loginUrl = 'http://localhost:3000/loginUser';
   coronaInfoUrl= 'http://localhost:3000/coronaInfo';
   coronaDataUrl = 'http://localhost:3000/getCoronaData';
+  userDetailsUrl = 'http://localhost:3000/getUserDetails';
+
   questionsAndAnswersUrl = '/assets/data/questions_and_answers.json';
 
   public coronaData;
   public coronaDataDate;
   constructor(private _http: HttpClient) { }
+  
 
   setIsScreenXs(data: boolean) {
     this.isScreenXs = data;
@@ -128,5 +131,11 @@ export class CoronaTrackerService {
   getQuestionsAndAnswers(): Observable<any>{
     return this._http.get(this.questionsAndAnswersUrl);
   }
+
+  getUserDetails(userEmail: string){
+    console.log("service: getUserDetails: email: "+userEmail);
+    return this._http.post<any>(this.userDetailsUrl,{"userEmail": userEmail});
+  }
+
 
 }

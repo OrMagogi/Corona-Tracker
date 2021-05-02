@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+var jwt = require('jsonwebtoken');
 const PORT = 3000;
 const app = express();
 app.use(bodyParser.json());
@@ -116,12 +117,6 @@ app.get('/coronaInfo', (req, res) => {
 // https://api.covid19api.com/summary
 
 app.get('/getCoronaData', (req, res) => {
-    /* fetch('https://api.covid19api.com/summary',settings)
-        .then((res)=>{
-            res.json();
-        }).then((dataInJson)=>{
-            console.log("dataInJson= "+dataInJson);
-        }) */
     https.get(url, (result) => {
         let body = "";
 
@@ -144,3 +139,18 @@ app.get('/getCoronaData', (req, res) => {
         console.error(error.message);
     });
 });
+
+app.post('/getUserDetails', (req, res) => {
+    let userEmail = req.body.userEmail;
+    User.findById(userEmail).then((response) => {
+        if (response == null) {
+            res.send({ "message": "email address does not exist" });
+        } else {
+            res.send({ "message": "success", "data": response});
+        }
+    }).catch((err) => {
+        res.send({ "message": "error" });
+    });
+});
+
+

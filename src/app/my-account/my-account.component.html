@@ -10,6 +10,33 @@
     </div>
 </ng-template>
 <ng-template #myAccount>
-    <div>My Account</div>
+    <div class="container">
+        <div class="qaContainer centered">
+            <h1 class="headline">My Account</h1>
+            <img class="profileImage" src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Circle-icons-profile.svg">
+            <div style="text-align: start;">
+                <div>
+                    <label>First Name: </label>
+                    <input disabled type="text" value="{{userDetails.firstName}}">
+                </div>
+                <div>
+                    <label>Last Name: </label>
+                    <input disabled type="text" value="{{userDetails.lastName}}">
+                </div>
+                <div>
+                    <label>Date of Birth: </label>
+                    <input disabled type="text" value="{{userDetails.dateOfBirth}}">
+                </div>
+                <div>
+                    <label>Email: </label>
+                    <input disabled type="text" value="{{userDetails._id}}">
+                </div>
+                <div>
+                    <label>Password: </label>
+                    <input disabled type="password" value="........">
+                </div>
+            </div>
+        </div>
+    </div>
 
 </ng-template>
